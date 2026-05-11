@@ -11,7 +11,7 @@ import kotlin.math.PI
 import kotlin.math.sqrt
 import kotlin.text.Regex
 
-private const val dataRootDir = "testdata/"
+private const val dataRootDir = "../../generate/"
 private const val MINUTES_PER_DAY = 24.0 * 60.0
 private const val SECONDS_PER_DAY = 60.0 * MINUTES_PER_DAY
 
