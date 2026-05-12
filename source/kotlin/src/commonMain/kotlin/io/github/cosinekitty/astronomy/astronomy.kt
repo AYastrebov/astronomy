@@ -24,8 +24,13 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+@file:JvmName("Astronomy")
 
 package io.github.cosinekitty.astronomy
+
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmStatic
 
 import kotlin.math.absoluteValue
 import kotlin.math.abs
@@ -733,6 +738,7 @@ class Time private constructor(
          *
          * @param tt The number of days after the J2000 epoch.
          */
+        @JvmStatic
         fun fromTerrestrialTime(tt: Double) = Time(universalTime(tt), tt)
 
         /**
@@ -743,6 +749,7 @@ class Time private constructor(
          * To facilitate using such values for astronomy calculations, this
          * function converts a millsecond count into a `Time` object.
          */
+        @JvmStatic
         fun fromMillisecondsSince1970(millis: Long) = Time((millis - 946728000000L) / MILLISECONDS_PER_DAY)
     }
 }
@@ -810,6 +817,7 @@ internal data class TerseVector(var x: Double, var y: Double, var z: Double) {
     }
 
     companion object {
+        @JvmStatic
         fun zero() = TerseVector(0.0, 0.0, 0.0)
     }
 }
@@ -1320,6 +1328,7 @@ class RotationMatrix(
          * This matrix can be the starting point for other operations,
          * such as calling a series of [RotationMatrix.combine] or [RotationMatrix.pivot].
          */
+        @JvmStatic
         fun identity() = RotationMatrix(
             1.0, 0.0, 0.0,
             0.0, 1.0, 0.0,
@@ -6806,6 +6815,7 @@ private fun internalSearchAltitude(
  * within `limitDays` days of `startTime`. This is a normal condition,
  * not an error.
  */
+@JvmOverloads
 fun searchRiseSet(
     body: Body,
     observer: Observer,

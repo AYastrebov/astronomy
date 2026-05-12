@@ -9,7 +9,7 @@ public class Seasons {
      * The calendar year value for which to find equinoxes and solstices.
      */
     public static int run(int year) {
-        SeasonsInfo seasons = AstronomyKt.seasons(year);
+        SeasonsInfo seasons = Astronomy.seasons(year);
         System.out.printf("March equinox     : %s%n", seasons.getMarchEquinox());
         System.out.printf("June solstice     : %s%n", seasons.getJuneSolstice());
         System.out.printf("September equinox : %s%n", seasons.getSeptemberEquinox());

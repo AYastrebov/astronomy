@@ -23,14 +23,6 @@ Run without arguments to see usage text:
 This requires the library at `../../source/kotlin` to be available (it is referenced
 via Gradle composite build).
 
-## Java interop notes
-
-Since the library was migrated to Kotlin Multiplatform, the Java API surface changed slightly:
-
-- Top-level functions are accessed via `AstronomyKt` instead of `Astronomy`
-- Companion object methods require `.Companion.` (e.g. `Time.Companion.fromMillisecondsSince1970(...)`)
-- Functions with default parameters require all arguments (e.g. `searchRiseSet` needs the `metersAboveGround` parameter)
-
 ---
 
 ### [Constellation.java](src/main/java/io/github/cosinekitty/astronomy/demo/Constellation.java)
