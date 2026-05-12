@@ -614,6 +614,9 @@ class Tests {
 
     //----------------------------------------------------------------------------------------
 
+    // Tolerance allows for 1-ULP rounding differences between JVM (which may use 80-bit
+    // extended precision FPU registers or FMA instructions) and Kotlin/Native (strict 64-bit
+    // IEEE 754 via LLVM). The hardcoded expected values were captured from JVM output.
     private fun compareMatrices(a: RotationMatrix, b: RotationMatrix, comment: String, tolerance: Double = 1.0e-15) {
         for (i in 0..2) {
             for (j in 0..2) {
