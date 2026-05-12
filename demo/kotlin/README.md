@@ -3,10 +3,11 @@
 This is a Kotlin Multiplatform console application that contains a collection of
 examples of how to use the Kotlin version of Astronomy Engine.
 
-The demo targets three platforms:
+The demo targets four platforms:
 - **JVM** — standard Java Virtual Machine
 - **WASM/WASI** — WebAssembly with WASI, runs via Node.js
 - **Linux native** — compiled to a native ELF binary
+- **Windows native** — compiled to a native PE executable
 
 The demo program is split into separate source files, one for each topic, as listed below.
 Each topic is chosen by a command line parameter.
@@ -42,6 +43,12 @@ via Gradle composite build).
 
 ```
 ./build/bin/linuxX64/releaseExecutable/AstronomyDemo.kexe seasons 2026
+```
+
+### Windows native
+
+```
+build\bin\mingwX64\releaseExecutable\AstronomyDemo.exe seasons 2026
 ```
 
 ## Usage

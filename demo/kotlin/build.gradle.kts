@@ -1,4 +1,8 @@
-@file:OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
+@file:OptIn(ExperimentalWasmDsl::class, ExperimentalKotlinGradlePluginApi::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -24,6 +28,14 @@ kotlin {
     }
 
     linuxX64 {
+        binaries {
+            executable {
+                entryPoint = "main"
+            }
+        }
+    }
+
+    mingwX64 {
         binaries {
             executable {
                 entryPoint = "main"
