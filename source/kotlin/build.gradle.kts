@@ -1,3 +1,5 @@
+@file:OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
+
 plugins {
     alias(libs.plugins.multiplatform)
     `maven-publish`
@@ -17,6 +19,8 @@ kotlin {
     macosArm64()
     linuxX64()
     mingwX64()
+    wasmJs { nodejs() }
+    wasmWasi { nodejs() }
 
     sourceSets {
         commonTest.dependencies {
