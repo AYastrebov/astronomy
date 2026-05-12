@@ -342,7 +342,6 @@ class Tests {
 
     private fun axisTestBody(body: Body, shortName: String, arcminTolerance: Double) {
         val filename = dataRootDir + "axis/" + shortName
-        
         var lnum = 0
         var foundData = false
         var maxArcmin = 0.0
@@ -779,7 +778,6 @@ class Tests {
     @Test
     fun `Verify constellations`() {
         val filename = dataRootDir + "constellation/test_input.txt"
-        
         var lnum = 0
         val regex = Regex("""^\s*(\d+)\s+(\S+)\s+(\S+)\s+([A-Z][a-zA-Z]{2})\s*$""")
         for (line in readFileLines(filename)) {
@@ -825,7 +823,6 @@ class Tests {
         var septemberCount = 0
         var decemberCount = 0
         var seasons: SeasonsInfo? = null
-        
         var maxMinutes = 0.0
         for (line in readFileLines(filename)) {
             ++lnum
@@ -944,7 +941,6 @@ class Tests {
     fun `Moon phase search`() {
         val thresholdSeconds = 90.0
         val filename = dataRootDir + "moonphase/moonphases.txt"
-        
         var lnum = 0
         var maxArcmin = 0.0
         var prevYear = 0
@@ -1082,7 +1078,6 @@ class Tests {
     @Test
     fun `Rise set test`() {
         val filename = dataRootDir + "riseset/riseset.txt"
-        
         var lnum = 0
         // Moon  103 -61 1944-01-02T17:08Z s
         // Moon  103 -61 1944-01-03T05:47Z r
@@ -1261,7 +1256,6 @@ class Tests {
         val filename = dataRootDir + "riseset/twilight.txt"
         val toleranceSeconds = 60.0
         var lnum = 0
-        
         for (line in readFileLines(filename)) {
             ++lnum
             val tokens = tokenize(line, 9, filename, lnum)
@@ -1293,7 +1287,6 @@ class Tests {
     @Test
     fun `Compare geoid state vectors with C`() {
         val filename = dataRootDir + "topostate/geoid.txt"
-        
         var lnum = 0
         val speedConvert = KM_PER_AU / 24.0     // converts AU/day into km/hour
         val posTolerance = 1.0e-6   // 1 millimeter
@@ -1389,7 +1382,6 @@ class Tests {
     @Test
     fun `Lunar eclipse search`() {
         val filename = dataRootDir + "eclipse/lunar_eclipse.txt"
-        
         var lnum = 0
         val diffLimit = 2.0     // maximum tolerable error in minutes
         var eclipse: LunarEclipseInfo = searchLunarEclipse(Time(1701, 1, 1, 0, 0, 0.0))
@@ -1451,7 +1443,6 @@ class Tests {
     @Test
     fun `Global solar eclipse search`() {
         val filename = dataRootDir + "eclipse/solar_eclipse.txt"
-        
         var lnum = 0
         var skipCount = 0
         var eclipse: GlobalSolarEclipseInfo = searchGlobalSolarEclipse(Time(1701, 1, 1, 0, 0, 0.0))
@@ -1529,7 +1520,6 @@ class Tests {
         // In each case, start the search 20 days before the expected eclipse.
         // Then verify that the peak time and eclipse type is correct in each case.
         val filename = dataRootDir + "eclipse/solar_eclipse.txt"
-        
         var lnum = 0
         var skipCount = 0
         for (line in readFileLines(filename)) {
@@ -1576,7 +1566,6 @@ class Tests {
     @Test
     fun `Local solar eclipse away from peak location`() {
         val filename = dataRootDir + "eclipse/local_solar_eclipse.txt"
-        
         var lnum = 0
         var verifyCount = 0
         for (rawLine in readFileLines(filename)) {
@@ -1782,7 +1771,6 @@ class Tests {
     )
 
     private fun jplHorizonsStateVectors(filename: String): List<JplStateRecord> {
-        
         var lnum = 0
         var foundBegin = false
         var part = 0
@@ -1935,7 +1923,6 @@ class Tests {
     }
 
     private fun testElongationFile(year: Int, filename: String, targetRelativeLongitude: Double) {
-        
         var lnum = 0
         val searchDate = Time(year, 1, 1, 0, 0, 0.0)
         for (line in readFileLines(filename)) {
@@ -1961,38 +1948,36 @@ class Tests {
         val stopTime = Time(stopYear, 1, 1, 0, 0, 0.0)
         val filename = dataRootDir + "temp/k_longitude_$body.txt"
         val outfile = StringBuilder()
-        run {
-            while (time.tt < stopTime.tt) {
-                ++count
-                val eventName = if (rlon == 0.0) zeroLonEventName else "sup"
-                val searchResult = searchRelativeLongitude(body, rlon, time)
-                assertTrue(searchResult.tt > time.tt, "searchRelativeLongitude went backwards from $time to $searchResult")
-                if (count >= 2) {
-                    // Check for consistent intervals.
-                    // Mainly I don't want to skip over an event!
-                    val dayDiff = searchResult.tt - time.tt
-                    if (count == 2) {
+        while (time.tt < stopTime.tt) {
+            ++count
+            val eventName = if (rlon == 0.0) zeroLonEventName else "sup"
+            val searchResult = searchRelativeLongitude(body, rlon, time)
+            assertTrue(searchResult.tt > time.tt, "searchRelativeLongitude went backwards from $time to $searchResult")
+            if (count >= 2) {
+                // Check for consistent intervals.
+                // Mainly I don't want to skip over an event!
+                val dayDiff = searchResult.tt - time.tt
+                if (count == 2) {
+                    minDiff = dayDiff
+                    maxDiff = dayDiff
+                } else if (count > 2) {
+                    if (dayDiff < minDiff)
                         minDiff = dayDiff
+                    if (dayDiff > maxDiff)
                         maxDiff = dayDiff
-                    } else if (count > 2) {
-                        if (dayDiff < minDiff)
-                            minDiff = dayDiff
-                        if (dayDiff > maxDiff)
-                            maxDiff = dayDiff
-                    }
                 }
-
-                // Write a line of test data to the output file.
-                // This output will be checked as a separate test step
-                // later by the `unit_test_kotlin` script (Linux/Mac) or `run.bat` (Windows).
-                val geo = geoVector(body, searchResult, Aberration.Corrected)
-                val dist = geo.length()
-                outfile.appendLine("e $body $eventName ${searchResult.tt} $dist")
-
-                // Search for the opposite longitude event next time.
-                time = searchResult
-                rlon = 180.0 - rlon
             }
+
+            // Write a line of test data to the output file.
+            // This output will be checked as a separate test step
+            // later by the `unit_test_kotlin` script (Linux/Mac) or `run.bat` (Windows).
+            val geo = geoVector(body, searchResult, Aberration.Corrected)
+            val dist = geo.length()
+            outfile.appendLine("e $body $eventName ${searchResult.tt} $dist")
+
+            // Search for the opposite longitude event next time.
+            time = searchResult
+            rlon = 180.0 - rlon
         }
         writeFileText(filename, outfile.toString())
 
@@ -2019,7 +2004,6 @@ class Tests {
     }
 
     private fun transitFile(body: Body, filename: String, limitMinutes: Double, limitSep: Double) {
-        
         var lnum = 0
         var transit = searchTransit(body, Time(1600, 1, 1, 0, 0, 0.0))
         for (line in readFileLines(filename)) {
@@ -2061,7 +2045,6 @@ class Tests {
     @Test
     fun `Lunar apsides`() {
         val filename = dataRootDir + "apsides/moon.txt"
-        
         var lnum = 0
         val startTime = Time(2001, 1, 1, 0, 0, 0.0)
         var apsis = searchLunarApsis(startTime)
@@ -2274,7 +2257,6 @@ class Tests {
 
     private fun checkMagnitudeData(body: Body) {
         val filename = dataRootDir + "magnitude/$body.txt"
-        
         val limit = 0.012
         var lnum = 0
         var count = 0
@@ -2333,7 +2315,6 @@ class Tests {
         // There is a pair of dates for the beginning and end of the max magnitude period,
         // given the limited precision.
         // We pick the point halfway between as the supposed max magnitude time.
-        
         var lnum = 0
         var searchTime = Time(2001, 1, 1, 0, 0, 0.0)
         for (line in readFileLines(filename)) {
@@ -2418,7 +2399,6 @@ class Tests {
 
     private fun verifyLibration(fileYear: Int) {
         val filename = dataRootDir + "libration/mooninfo_$fileYear.txt"
-        
         var lnum = 0
         for (line in readFileLines(filename)) {
             ++lnum
@@ -2458,7 +2438,6 @@ class Tests {
     @Test
     fun `Moon ascending and descending nodes`() {
         val filename = dataRootDir + "moon_nodes/moon_nodes.txt"
-        
         var lnum = 0
         var prevKind = "?"
         var node: NodeEventInfo? = null
@@ -2765,7 +2744,6 @@ class Tests {
     @Test
     fun `Atmospheric temperature pressure density`() {
         val filename = dataRootDir + "riseset/atmosphere.csv"
-        
         var lnum = 0
         var ncases = 0
         val reCommaDelim = Regex("""[,\s]+""")
@@ -2800,7 +2778,6 @@ class Tests {
     @Test
     fun `Rise set elevation`() {
         val filename = dataRootDir + "riseset/elevation.txt"
-        
         var lnum = 0
         val re = Regex("""[\s:]+""")
         for (line in readFileLines(filename)) {
