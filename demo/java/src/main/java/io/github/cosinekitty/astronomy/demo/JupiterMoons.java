@@ -29,13 +29,13 @@ public class JupiterMoons {
 
         System.out.printf("Calculations for: %s%n", time);
 
-        Vector jv = Astronomy.geoVector(Body.Jupiter, time, Aberration.Corrected);
+        Vector jv = AstronomyKt.geoVector(Body.Jupiter, time, Aberration.Corrected);
 
         // Calculate the amount of time it took light to reach the Earth from Jupiter.
         // The distance to Jupiter (AU) divided by the speed of light (AU/day) = time in days.
-        double lightTravelDays = jv.length() / Astronomy.C_AUDAY;
+        double lightTravelDays = jv.length() / AstronomyKt.C_AUDAY;
         System.out.println();
-        System.out.println(String.format("It took light %.2f minutes to reach the Earth from Jupiter.", lightTravelDays * Astronomy.MINUTES_PER_DAY));
+        System.out.println(String.format("It took light %.2f minutes to reach the Earth from Jupiter.", lightTravelDays * AstronomyKt.MINUTES_PER_DAY));
         System.out.println();
 
         // The jupiterMoons function calculates positions of Jupiter's moons without
@@ -43,7 +43,7 @@ public class JupiterMoons {
         // by the given amount of light travel time.
         Time backdate = time.addDays(-lightTravelDays);
 
-        JupiterMoonsInfo jm = Astronomy.jupiterMoons(backdate);
+        JupiterMoonsInfo jm = AstronomyKt.jupiterMoons(backdate);
 
         // Tricky: the `+` operator for adding `Vector` will throw an exception
         // if the vectors do not have matching times. We work around this

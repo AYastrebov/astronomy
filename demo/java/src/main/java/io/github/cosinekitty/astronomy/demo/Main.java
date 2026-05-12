@@ -114,7 +114,7 @@ public class Main {
             ? Instant.parse(args[index]).toEpochMilli()
             : System.currentTimeMillis();
 
-        return Time.fromMillisecondsSince1970(millis);
+        return Time.Companion.fromMillisecondsSince1970(millis);
     }
 
     private static double parseNumber(String name, String text, double minValue, double maxValue) throws DemoException {

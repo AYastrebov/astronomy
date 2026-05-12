@@ -16,7 +16,7 @@ public class MainTests {
     private void timeTest() {
         String text = "2022-04-29T12:34:45.321Z";
         long millis = Instant.parse(text).toEpochMilli();
-        String check = Time.fromMillisecondsSince1970(millis).toString();
+        String check = Time.Companion.fromMillisecondsSince1970(millis).toString();
         assertEquals(text, check);
     }
 }

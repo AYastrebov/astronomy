@@ -45,13 +45,13 @@ public class Constellation {
 
     private static ConstellationInfo bodyConstellation(Body body, Time time) {
         // Find a vector from the center of the Earth to the center of the body.
-        Vector vec = Astronomy.geoVector(body, time, Aberration.Corrected);
+        Vector vec = AstronomyKt.geoVector(body, time, Aberration.Corrected);
 
         // Convert cartesian vector to spherical angular coordinates.
         Equatorial equ = vec.toEquatorial();
 
         // Use the right ascension and declination to find the constellation.
-        return Astronomy.constellation(equ.getRa(), equ.getDec());
+        return AstronomyKt.constellation(equ.getRa(), equ.getDec());
     }
 
     private static boolean sameConstellation(ConstellationInfo c1, ConstellationInfo c2) {
@@ -74,7 +74,7 @@ public class Constellation {
         Time startTime,
         Time endTime
     ) {
-        final double tolerance = 0.1 / Astronomy.SECONDS_PER_DAY;   // one tenth of a second, expressed in days
+        final double tolerance = 0.1 / AstronomyKt.SECONDS_PER_DAY;   // one tenth of a second, expressed in days
         Time t1 = startTime;
         Time t2 = endTime;
 

@@ -21,9 +21,9 @@ public class Positions {
         System.out.println();
         System.out.println("BODY           RA      DEC       AZ      ALT");
         for (Body body : bodyList) {
-            Equatorial equ_2000 = Astronomy.equator(body, time, observer, EquatorEpoch.J2000, Aberration.Corrected);
-            Equatorial equ_ofdate = Astronomy.equator(body, time, observer, EquatorEpoch.OfDate, Aberration.Corrected);
-            Topocentric hor = Astronomy.horizon(time, observer, equ_ofdate.getRa(), equ_ofdate.getDec(), Refraction.Normal);
+            Equatorial equ_2000 = AstronomyKt.equator(body, time, observer, EquatorEpoch.J2000, Aberration.Corrected);
+            Equatorial equ_ofdate = AstronomyKt.equator(body, time, observer, EquatorEpoch.OfDate, Aberration.Corrected);
+            Topocentric hor = AstronomyKt.horizon(time, observer, equ_ofdate.getRa(), equ_ofdate.getDec(), Refraction.Normal);
             System.out.printf("%-8s %8.2f %8.2f %8.2f %8.2f%n", body, equ_2000.getRa(), equ_2000.getDec(), hor.getAzimuth(), hor.getAltitude());
         }
         return 0;

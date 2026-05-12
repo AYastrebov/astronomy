@@ -12,7 +12,7 @@ public class SolarTime {
      * The date and time for which to calculate true solar time.
      */
     public static int run(Observer observer, Time time) {
-        double ha = Astronomy.hourAngle(Body.Sun, time, observer);
+        double ha = AstronomyKt.hourAngle(Body.Sun, time, observer);
         double solarTimeHours = (ha + 12.0) % 24.0;
         int milli = (int) Math.round(solarTimeHours * 3.6e+6);
         int second = milli / 1000;

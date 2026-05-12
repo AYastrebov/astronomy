@@ -16,21 +16,21 @@ public class MoonPhase {
         //  90 degrees = first quarter,
         // 180 degrees = full moon,
         // 270 degrees = third quarter
-        double phase = Astronomy.moonPhase(time);
+        double phase = AstronomyKt.moonPhase(time);
         System.out.printf("%s : Moon's ecliptic phase angle = %1.3f degrees.%n", time, phase);
 
         // Calculate the fraction of the Moon's disc that appears
         // illuminated, as seen from the Earth.
-        IlluminationInfo illum = Astronomy.illumination(Body.Moon, time);
+        IlluminationInfo illum = AstronomyKt.illumination(Body.Moon, time);
         System.out.printf("%s : Moon's illuminated fraction = %1.2f%%.%n", time, 100.0 * illum.getPhaseFraction());
 
         // Predict when the next 10 lunar quarter phases will happen.
         System.out.println();
         System.out.println("The next 10 lunar quarters are:");
-        MoonQuarterInfo mq = Astronomy.searchMoonQuarter(time);
+        MoonQuarterInfo mq = AstronomyKt.searchMoonQuarter(time);
         for (int i = 0; i < 10; ++i) {
             if (i > 0) {
-                mq = Astronomy.nextMoonQuarter(mq);
+                mq = AstronomyKt.nextMoonQuarter(mq);
             }
             System.out.printf("%s : %s%n", mq.getTime(), quarterName(mq.getQuarter()));
         }

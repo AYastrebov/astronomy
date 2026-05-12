@@ -30,14 +30,14 @@ public class RiseSetCulm {
         var eventList = new ArrayList<AstroEvent>();
 
         // Rise/set times may or may not occur within any finite search window.
-        maybeAdd(eventList, "sunrise",  Astronomy.searchRiseSet(Body.Sun,  observer, Direction.Rise, startTime, dayLimit));
-        maybeAdd(eventList, "sunset",   Astronomy.searchRiseSet(Body.Sun,  observer, Direction.Set,  startTime, dayLimit));
-        maybeAdd(eventList, "moonrise", Astronomy.searchRiseSet(Body.Moon, observer, Direction.Rise, startTime, dayLimit));
-        maybeAdd(eventList, "moonset",  Astronomy.searchRiseSet(Body.Moon, observer, Direction.Set,  startTime, dayLimit));
+        maybeAdd(eventList, "sunrise",  AstronomyKt.searchRiseSet(Body.Sun,  observer, Direction.Rise, startTime, dayLimit, 0.0));
+        maybeAdd(eventList, "sunset",   AstronomyKt.searchRiseSet(Body.Sun,  observer, Direction.Set,  startTime, dayLimit, 0.0));
+        maybeAdd(eventList, "moonrise", AstronomyKt.searchRiseSet(Body.Moon, observer, Direction.Rise, startTime, dayLimit, 0.0));
+        maybeAdd(eventList, "moonset",  AstronomyKt.searchRiseSet(Body.Moon, observer, Direction.Set,  startTime, dayLimit, 0.0));
 
         // Culmination times can always be found regardless of latitude.
-        eventList.add(new AstroEvent("sunculm",  Astronomy.searchHourAngle(Body.Sun,  observer, 0.0, startTime, +1)));
-        eventList.add(new AstroEvent("moonculm", Astronomy.searchHourAngle(Body.Moon, observer, 0.0, startTime, +1)));
+        eventList.add(new AstroEvent("sunculm",  AstronomyKt.searchHourAngle(Body.Sun,  observer, 0.0, startTime, +1)));
+        eventList.add(new AstroEvent("moonculm", AstronomyKt.searchHourAngle(Body.Moon, observer, 0.0, startTime, +1)));
 
         // Sort the list chronologically.
         Collections.sort(eventList);
