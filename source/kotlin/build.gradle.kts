@@ -2,6 +2,7 @@
 
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.android.kmp.library)
     `maven-publish`
 }
 
@@ -10,9 +11,15 @@ version = "2.1.19"
 
 repositories {
     mavenCentral()
+    google()
 }
 
 kotlin {
+    android {
+        namespace = "io.github.cosinekitty.astronomy"
+        compileSdk = 36
+        minSdk = 23
+    }
     jvm()
     iosArm64()
     iosSimulatorArm64()

@@ -30,7 +30,6 @@ package io.github.cosinekitty.astronomy
 
 import kotlin.jvm.JvmName
 import kotlin.jvm.JvmOverloads
-import kotlin.jvm.Synchronized
 import kotlin.jvm.JvmStatic
 
 import kotlin.math.absoluteValue
@@ -3639,7 +3638,7 @@ private fun gravFromState(state: BodyState): GravSim {
     return GravSim(bary, grav)
 }
 
-@Synchronized
+@Suppress("NON_JVM_SYNCHRONIZED")
 private fun getPlutoSegment(tt: Double): List<BodyGravCalc>? {
     if (tt < plutoStateTable[0].tt || tt > plutoStateTable[PLUTO_NUM_STATES-1].tt)
         return null     // Don't bother calculating a segment. Let the caller crawl backward/forward to this time
