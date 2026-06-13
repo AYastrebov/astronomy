@@ -136,6 +136,41 @@ const val GANYMEDE_RADIUS_KM = 2631.2
 const val CALLISTO_RADIUS_KM = 2410.3
 
 /**
+ * The mean radius of the Sun, expressed in kilometers.
+ */
+const val SUN_MEAN_RADIUS_KM = 695700.0
+
+/**
+ * The mean radius of Mercury, expressed in kilometers.
+ */
+const val MERCURY_MEAN_RADIUS_KM = 2439.7
+
+/**
+ * The mean radius of Venus, expressed in kilometers.
+ */
+const val VENUS_MEAN_RADIUS_KM = 6051.8
+
+/**
+ * The mean radius of Mars, expressed in kilometers.
+ */
+const val MARS_MEAN_RADIUS_KM = 3389.5
+
+/**
+ * The mean radius of Saturn, expressed in kilometers.
+ */
+const val SATURN_MEAN_RADIUS_KM = 58232.0
+
+/**
+ * The mean radius of Uranus, expressed in kilometers.
+ */
+const val URANUS_MEAN_RADIUS_KM = 25362.0
+
+/**
+ * The mean radius of Neptune, expressed in kilometers.
+ */
+const val NEPTUNE_MEAN_RADIUS_KM = 24622.0
+
+/**
  * The speed of light in AU/day.
  */
 const val C_AUDAY = 173.1446326846693
@@ -177,19 +212,19 @@ private const val DAYS_PER_MILLENNIUM = 365250.0
 private const val ASEC360 = 1296000.0
 private const val ASEC2RAD = 4.848136811095359935899141e-6
 private const val PI2 = 2.0 * PI
-private const val SUN_RADIUS_KM  = 695700.0
+const val SUN_RADIUS_KM  = 695700.0
 private const val SUN_RADIUS_AU  = SUN_RADIUS_KM / KM_PER_AU
 private const val EARTH_FLATTENING = 0.996647180302104
 private const val EARTH_FLATTENING_SQUARED = EARTH_FLATTENING * EARTH_FLATTENING
 private const val EARTH_EQUATORIAL_RADIUS_KM = 6378.1366
 private const val EARTH_EQUATORIAL_RADIUS_AU = EARTH_EQUATORIAL_RADIUS_KM / KM_PER_AU
 private const val EARTH_POLAR_RADIUS_KM = EARTH_EQUATORIAL_RADIUS_KM * EARTH_FLATTENING
-private const val EARTH_MEAN_RADIUS_KM = 6371.0    // mean radius of the Earth's geoid, without atmosphere
+const val EARTH_MEAN_RADIUS_KM = 6371.0    // mean radius of the Earth's geoid, without atmosphere
 private const val EARTH_ATMOSPHERE_KM = 88.0       // effective atmosphere thickness for lunar eclipses
 private const val EARTH_ECLIPSE_RADIUS_KM = EARTH_MEAN_RADIUS_KM + EARTH_ATMOSPHERE_KM
 private const val MOON_EQUATORIAL_RADIUS_KM = 1738.1
 private const val MOON_EQUATORIAL_RADIUS_AU = (MOON_EQUATORIAL_RADIUS_KM / KM_PER_AU)
-private const val MOON_MEAN_RADIUS_KM       = 1737.4
+const val MOON_MEAN_RADIUS_KM       = 1737.4
 private const val MOON_POLAR_RADIUS_KM      = 1736.0
 private const val MOON_POLAR_RADIUS_AU      = (MOON_POLAR_RADIUS_KM / KM_PER_AU)
 private const val ANGVEL = 7.2921150e-5
