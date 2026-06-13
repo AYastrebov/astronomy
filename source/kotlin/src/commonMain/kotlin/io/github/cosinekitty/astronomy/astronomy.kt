@@ -136,11 +136,6 @@ const val GANYMEDE_RADIUS_KM = 2631.2
 const val CALLISTO_RADIUS_KM = 2410.3
 
 /**
- * The mean radius of the Sun, expressed in kilometers.
- */
-const val SUN_MEAN_RADIUS_KM = 695700.0
-
-/**
  * The mean radius of Mercury, expressed in kilometers.
  */
 const val MERCURY_MEAN_RADIUS_KM = 2439.7
