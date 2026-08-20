@@ -1,7 +1,7 @@
 [versions]
-kotlin = "2.3.21"
-kotlinx-io = "0.9.0"
-agp = "8.13.2"
+kotlin = "2.4.10"
+kotlinx-io = "0.9.1"
+agp = "9.2.1"
 
 [libraries]
 kotlinx-io-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
