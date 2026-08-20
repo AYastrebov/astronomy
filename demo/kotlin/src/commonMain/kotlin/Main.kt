@@ -74,7 +74,7 @@ fun main(args: Array<String>) {
 
 class DemoException(message:String): Exception(message)
 
-private val regexDateTime = Regex("""^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z$""")
+private val regexDateTime = Regex("""^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)Z$""")
 
 private fun runDemo(args: Array<String>): Int {
     if (args.isEmpty()) return printUsage()
