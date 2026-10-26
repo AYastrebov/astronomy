@@ -46,7 +46,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation("io.github.cosinekitty:astronomy")
-            implementation(libs.kotlinx.datetime)
         }
     }
 }

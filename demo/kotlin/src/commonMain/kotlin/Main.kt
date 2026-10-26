@@ -1,5 +1,5 @@
 import io.github.cosinekitty.astronomy.*
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 private const val usageText = """
 In all demos that include [yyyy-mm-ddThh:mm:ssZ]

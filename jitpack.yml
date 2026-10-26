@@ -1,4 +1,4 @@
-# Gradle 9.6.1 and AGP 9.x both require JDK 17+; JitPack defaults to JDK 8.
+# Gradle 9.8.2 and AGP 9.x both require JDK 17+; JitPack defaults to JDK 8.
 jdk:
   - openjdk17
 
