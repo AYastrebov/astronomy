@@ -2,4 +2,4 @@
 
 # Ecliptic
 
-fun [Ecliptic](-ecliptic.md)(vec: [Vector](../-vector/index.md), elat: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html), elon: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html))
+constructor(vec: [Vector](../-vector/index.md), elat: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html), elon: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html))

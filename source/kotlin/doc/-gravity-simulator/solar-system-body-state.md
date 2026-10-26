@@ -10,9 +10,11 @@ In order to simulate the movement of small bodies through the Solar System, the 
 
 If an application wants to know the positions of one or more of the planets in addition to the small bodies, this function provides a way to obtain their state vectors. This is provided for the sake of efficiency, to avoid redundant calculations.
 
-The state vector is returned relative to the position and velocity of the originBody parameter that was passed to this object's constructor.
+The state vector is returned relative to the position and velocity of the `originBody` parameter that was passed to this object's constructor.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

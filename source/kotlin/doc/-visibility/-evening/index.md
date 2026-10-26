@@ -2,7 +2,6 @@
 
 # Evening
 
-[Evening](index.md)()
+[Evening](index.md)
 
 The body is best visible in the evening, after sunset.
-

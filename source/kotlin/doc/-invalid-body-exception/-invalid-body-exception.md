@@ -2,4 +2,4 @@
 
 # InvalidBodyException
 
-fun [InvalidBodyException](-invalid-body-exception.md)(body: [Body](../-body/index.md))
+constructor(body: [Body](../-body/index.md))

@@ -8,7 +8,9 @@ Calculates a rotation matrix from equatorial of-date (EQD) to J2000 mean equator
 
 This is one of the family of functions that returns a rotation matrix for converting from one orientation to another. Source: EQD = equatorial system, using equator of the specified date/time. Target: EQJ = equatorial system, using equator at J2000 epoch.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

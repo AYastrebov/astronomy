@@ -12,7 +12,9 @@ Given a time of observation, calculates the Moon's position vector. The vector i
 
 The Moon's position vector in J2000 equatorial coordinates (EQJ).
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

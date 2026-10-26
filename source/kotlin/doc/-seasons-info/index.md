@@ -2,7 +2,7 @@
 
 # SeasonsInfo
 
-class [SeasonsInfo](index.md)(marchEquinox: [Time](../-time/index.md), juneSolstice: [Time](../-time/index.md), septemberEquinox: [Time](../-time/index.md), decemberSolstice: [Time](../-time/index.md))
+class [SeasonsInfo](index.md)(val marchEquinox: [Time](../-time/index.md), val juneSolstice: [Time](../-time/index.md), val septemberEquinox: [Time](../-time/index.md), val decemberSolstice: [Time](../-time/index.md))
 
 The dates and times of changes of season for a given calendar year.
 
@@ -12,7 +12,7 @@ Call [seasons](../seasons.md) to calculate this data structure for a given year.
 
 | | |
 |---|---|
-| [SeasonsInfo](-seasons-info.md)<br>fun [SeasonsInfo](-seasons-info.md)(marchEquinox: [Time](../-time/index.md), juneSolstice: [Time](../-time/index.md), septemberEquinox: [Time](../-time/index.md), decemberSolstice: [Time](../-time/index.md)) |
+| [SeasonsInfo](-seasons-info.md)<br>constructor(marchEquinox: [Time](../-time/index.md), juneSolstice: [Time](../-time/index.md), septemberEquinox: [Time](../-time/index.md), decemberSolstice: [Time](../-time/index.md)) |
 
 ## Properties
 

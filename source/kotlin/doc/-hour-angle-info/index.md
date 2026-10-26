@@ -2,7 +2,7 @@
 
 # HourAngleInfo
 
-class [HourAngleInfo](index.md)(time: [Time](../-time/index.md), hor: [Topocentric](../-topocentric/index.md))
+class [HourAngleInfo](index.md)(val time: [Time](../-time/index.md), val hor: [Topocentric](../-topocentric/index.md))
 
 Information about a celestial body crossing a specific hour angle.
 
@@ -12,7 +12,7 @@ Returned by the function [searchHourAngle](../search-hour-angle.md) to report in
 
 | | |
 |---|---|
-| [HourAngleInfo](-hour-angle-info.md)<br>fun [HourAngleInfo](-hour-angle-info.md)(time: [Time](../-time/index.md), hor: [Topocentric](../-topocentric/index.md)) |
+| [HourAngleInfo](-hour-angle-info.md)<br>constructor(time: [Time](../-time/index.md), hor: [Topocentric](../-topocentric/index.md)) |
 
 ## Properties
 

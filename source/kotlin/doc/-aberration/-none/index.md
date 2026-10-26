@@ -2,7 +2,6 @@
 
 # None
 
-[None](index.md)()
+[None](index.md)
 
 Do not correct for aberration.
-

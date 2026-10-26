@@ -2,4 +2,4 @@
 
 # JupiterMoonsInfo
 
-fun [JupiterMoonsInfo](-jupiter-moons-info.md)(io: [StateVector](../-state-vector/index.md), europa: [StateVector](../-state-vector/index.md), ganymede: [StateVector](../-state-vector/index.md), callisto: [StateVector](../-state-vector/index.md))
+constructor(io: [StateVector](../-state-vector/index.md), europa: [StateVector](../-state-vector/index.md), ganymede: [StateVector](../-state-vector/index.md), callisto: [StateVector](../-state-vector/index.md))

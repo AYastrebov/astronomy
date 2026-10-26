@@ -2,5 +2,6 @@
 
 # Mercury
 
-The planet Mercury.
+[Mercury](index.md)
 
+The planet Mercury.

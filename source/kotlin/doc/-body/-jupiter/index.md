@@ -2,5 +2,6 @@
 
 # Jupiter
 
-The planet Jupiter.
+[Jupiter](index.md)
 
+The planet Jupiter.

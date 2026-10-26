@@ -2,7 +2,6 @@
 
 # Star4
 
-[Star4](index.md)(null, null)
+[Star4](index.md)
 
 User-defined star 4.
-

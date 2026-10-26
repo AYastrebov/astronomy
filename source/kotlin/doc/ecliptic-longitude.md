@@ -2,7 +2,7 @@
 
 # eclipticLongitude
 
-fun [eclipticLongitude](ecliptic-longitude.md)(body: [Body](-body/index.md), time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+fun [eclipticLongitude](ecliptic-longitude.md)(body: [Body](-body/index.md), time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Calculates heliocentric ecliptic longitude of a body.
 
@@ -12,7 +12,9 @@ This function calculates the angle around the plane of the Earth's orbit of a ce
 
 The ecliptic longitude in degrees of the given body at the given time.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

@@ -6,4 +6,4 @@ infix fun [combine](combine.md)(other: [RotationMatrix](index.md)): [RotationMat
 
 Creates a rotation based on applying one rotation followed by another.
 
-Given two rotation matrices, returns a combined rotation matrix that is equivalent to rotating based on this matrix, followed by the matrix other.
+Given two rotation matrices, returns a combined rotation matrix that is equivalent to rotating based on this matrix, followed by the matrix `other`.

@@ -2,7 +2,7 @@
 
 # angleFromSun
 
-fun [angleFromSun](angle-from-sun.md)(body: [Body](-body/index.md), time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+fun [angleFromSun](angle-from-sun.md)(body: [Body](-body/index.md), time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Returns the angle between the given body and the Sun, as seen from the Earth.
 
@@ -12,7 +12,9 @@ This function calculates the angular separation between the given body and the S
 
 The angle in degrees between the Sun and the specified body as seen from the center of the Earth.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

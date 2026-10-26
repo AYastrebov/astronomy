@@ -2,7 +2,7 @@
 
 # massProduct
 
-fun [massProduct](mass-product.md)(body: [Body](-body/index.md)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+fun [massProduct](mass-product.md)(body: [Body](-body/index.md)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Returns the product of mass and universal gravitational constant of a Solar System body.
 
@@ -12,7 +12,9 @@ For problems involving the gravitational interactions of Solar System bodies, it
 
 The mass product of the given body in au^3/day^2.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

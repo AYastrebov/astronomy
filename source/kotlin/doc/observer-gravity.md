@@ -2,7 +2,7 @@
 
 # observerGravity
 
-fun [observerGravity](observer-gravity.md)(latitude: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html), height: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+fun [observerGravity](observer-gravity.md)(latitude: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html), height: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Calculates the gravitational acceleration experienced by an observer on the Earth.
 
@@ -12,7 +12,9 @@ This function implements the WGS 84 Ellipsoidal Gravity Formula. The result is a
 
 The effective gravitational acceleration expressed in meters per second squared.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

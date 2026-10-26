@@ -12,7 +12,9 @@ Given a time of observation, calculates the geocentric position and velocity vec
 
 The EMB's position and velocity vectors in geocentric J2000 equatorial coordinates.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

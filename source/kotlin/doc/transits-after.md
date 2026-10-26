@@ -2,7 +2,7 @@
 
 # transitsAfter
 
-fun [transitsAfter](transits-after.md)(body: [Body](-body/index.md), startTime: [Time](-time/index.md)): [Sequence](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.sequences/-sequence/index.html)&lt;[TransitInfo](-transit-info/index.md)&gt;
+fun [transitsAfter](transits-after.md)(body: [Body](-body/index.md), startTime: [Time](-time/index.md)): [Sequence](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.sequences/-sequence/index.html)&lt;[TransitInfo](-transit-info/index.md)&gt;
 
 Enumerates a series of consecutive transits of Mercury or Venus.
 
@@ -10,7 +10,9 @@ This function enables iteration through a series of consecutive transits of Merc
 
 This is a convenience wrapper around [searchTransit](search-transit.md) and [nextTransit](next-transit.md).
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

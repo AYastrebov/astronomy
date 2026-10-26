@@ -10,7 +10,9 @@ After calling [searchTransit](search-transit.md) to find a transit of Mercury or
 
 See [transitsAfter](transits-after.md) for convenient iteration of consecutive transits.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

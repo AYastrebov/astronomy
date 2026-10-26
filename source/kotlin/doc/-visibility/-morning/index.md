@@ -2,7 +2,6 @@
 
 # Morning
 
-[Morning](index.md)()
+[Morning](index.md)
 
 The body is best visible in the morning, before sunrise.
-

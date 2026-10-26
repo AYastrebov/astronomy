@@ -10,7 +10,9 @@ Finds the next consecutive time the Moon is closest or farthest from the Earth i
 
 See [searchLunarApsis](search-lunar-apsis.md) for more details. See [lunarApsidesAfter](lunar-apsides-after.md) for convenient iteration of consecutive lunar apsides.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

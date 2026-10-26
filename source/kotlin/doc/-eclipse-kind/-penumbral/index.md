@@ -2,7 +2,6 @@
 
 # Penumbral
 
-[Penumbral](index.md)()
+[Penumbral](index.md)
 
 A penumbral lunar eclipse. (Never used for a solar eclipse.)
-

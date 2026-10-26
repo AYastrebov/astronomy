@@ -2,7 +2,6 @@
 
 # Partial
 
-[Partial](index.md)()
+[Partial](index.md)
 
 A partial lunar/solar eclipse.
-

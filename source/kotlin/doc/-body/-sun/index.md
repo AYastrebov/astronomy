@@ -2,5 +2,6 @@
 
 # Sun
 
-The Sun.
+[Sun](index.md)
 
+The Sun.

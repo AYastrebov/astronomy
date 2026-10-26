@@ -2,7 +2,6 @@
 
 # OfDate
 
-[OfDate](index.md)()
+[OfDate](index.md)
 
 Represent equatorial coordinates using the Earth's equator at the given date and time.
-

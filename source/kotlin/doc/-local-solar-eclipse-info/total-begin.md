@@ -4,4 +4,4 @@
 
 val [totalBegin](total-begin.md): [EclipseEvent](../-eclipse-event/index.md)?
 
-If this is an annular or a total eclipse, the time and Sun altitude when annular/total phase begins; otherwise null.
+If this is an annular or a total eclipse, the time and Sun altitude when annular/total phase begins; otherwise `null`.

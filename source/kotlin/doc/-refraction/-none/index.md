@@ -2,7 +2,6 @@
 
 # None
 
-[None](index.md)()
+[None](index.md)
 
 No atmospheric refraction correction (airless).
-

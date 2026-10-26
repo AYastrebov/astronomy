@@ -2,10 +2,10 @@
 
 # toString
 
-open override fun [toString](to-string.md)(): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html)
+open override fun [toString](to-string.md)(): [String](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html)
 
-Converts this DateTime to ISO 8601 format, expressed in UTC with millisecond resolution.
+Converts this `DateTime` to ISO 8601 format, expressed in UTC with millisecond resolution.
 
 #### Return
 
-Example: "2019-08-30T17:45:22.763Z".
+Example: &quot;2019-08-30T17:45:22.763Z&quot;.

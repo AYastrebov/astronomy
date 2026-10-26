@@ -2,7 +2,6 @@
 
 # Descending
 
-[Descending](index.md)()
+[Descending](index.md)
 
 The body passes through the ecliptic plane from north to south.
-

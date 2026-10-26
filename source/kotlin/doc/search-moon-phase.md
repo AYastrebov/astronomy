@@ -2,7 +2,7 @@
 
 # searchMoonPhase
 
-fun [searchMoonPhase](search-moon-phase.md)(targetLon: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html), startTime: [Time](-time/index.md), limitDays: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)): [Time](-time/index.md)?
+fun [searchMoonPhase](search-moon-phase.md)(targetLon: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html), startTime: [Time](-time/index.md), limitDays: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)): [Time](-time/index.md)?
 
 Searches for the time that the Moon reaches a specified phase.
 
@@ -14,12 +14,14 @@ If you want to iterate through lunar quarters (new moon, first quarter, full moo
 
 #### Return
 
-If successful, returns the date and time the moon reaches the phase specified by targetlon. This function will return null if the phase does not occur within limitDays of startTime; that is, if the search window is too small.
+If successful, returns the date and time the moon reaches the phase specified by `targetlon`. This function will return `null` if the phase does not occur within `limitDays` of `startTime`; that is, if the search window is too small.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|
 | targetLon | The difference in geocentric longitude between the Sun and Moon that specifies the lunar phase being sought. This can be any value in the range [0, 360).  Certain values have conventional names: 0 = new moon, 90 = first quarter, 180 = full moon, 270 = third quarter. |
 | startTime | The beginning of the time window in which to search for the Moon reaching the specified phase. |
-| limitDays | The number of days away from startTime that limits the time window for the search. If the value is negative, the search is performed into the past from startTime. Otherwise, the search is performed into the future from startTime. |
+| limitDays | The number of days away from `startTime` that limits the time window for the search. If the value is negative, the search is performed into the past from `startTime`. Otherwise, the search is performed into the future from `startTime`. |

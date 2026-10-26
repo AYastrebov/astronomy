@@ -2,7 +2,6 @@
 
 # Pericenter
 
-[Pericenter](index.md)()
+[Pericenter](index.md)
 
 The body is at its closest approach to the object it orbits.
-

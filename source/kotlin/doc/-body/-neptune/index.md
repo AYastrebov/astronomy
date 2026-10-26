@@ -2,5 +2,6 @@
 
 # Neptune
 
-The planet Neptune.
+[Neptune](index.md)
 
+The planet Neptune.

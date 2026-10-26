@@ -2,7 +2,7 @@
 
 # NodeEventInfo
 
-class [NodeEventInfo](index.md)(time: [Time](../-time/index.md), kind: [NodeEventKind](../-node-event-kind/index.md))
+class [NodeEventInfo](index.md)(val time: [Time](../-time/index.md), val kind: [NodeEventKind](../-node-event-kind/index.md))
 
 Information about an ascending or descending node of a body.
 
@@ -12,7 +12,7 @@ This object is returned by [searchMoonNode](../search-moon-node.md) and [nextMoo
 
 | | |
 |---|---|
-| [NodeEventInfo](-node-event-info.md)<br>fun [NodeEventInfo](-node-event-info.md)(time: [Time](../-time/index.md), kind: [NodeEventKind](../-node-event-kind/index.md)) |
+| [NodeEventInfo](-node-event-info.md)<br>constructor(time: [Time](../-time/index.md), kind: [NodeEventKind](../-node-event-kind/index.md)) |
 
 ## Properties
 

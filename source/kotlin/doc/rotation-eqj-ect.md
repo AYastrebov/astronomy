@@ -8,7 +8,9 @@ Calculates a rotation matrix from J2000 mean equator (EQJ) to true ecliptic of d
 
 This is one of the family of functions that returns a rotation matrix for converting from one orientation to another. Source: EQJ = equatorial system, using equator at J2000 epoch. Target: ECT = ecliptic system, using true equinox of the specified date/time.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

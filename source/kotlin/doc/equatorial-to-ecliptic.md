@@ -12,7 +12,9 @@ Given coordinates relative to the Earth's equator at J2000 (the instant of noon 
 
 Spherical and vector coordinates expressed in true ecliptic coordinates of date (ECT)..
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

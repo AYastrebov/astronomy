@@ -2,4 +2,4 @@
 
 # SeasonsInfo
 
-fun [SeasonsInfo](-seasons-info.md)(marchEquinox: [Time](../-time/index.md), juneSolstice: [Time](../-time/index.md), septemberEquinox: [Time](../-time/index.md), decemberSolstice: [Time](../-time/index.md))
+constructor(marchEquinox: [Time](../-time/index.md), juneSolstice: [Time](../-time/index.md), septemberEquinox: [Time](../-time/index.md), decemberSolstice: [Time](../-time/index.md))

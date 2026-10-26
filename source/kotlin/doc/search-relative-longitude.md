@@ -2,13 +2,13 @@
 
 # searchRelativeLongitude
 
-fun [searchRelativeLongitude](search-relative-longitude.md)(body: [Body](-body/index.md), targetRelativeLongitude: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html), startTime: [Time](-time/index.md)): [Time](-time/index.md)
+fun [searchRelativeLongitude](search-relative-longitude.md)(body: [Body](-body/index.md), targetRelativeLongitude: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html), startTime: [Time](-time/index.md)): [Time](-time/index.md)
 
 Searches for the time when the Earth and another planet are separated by a specified angle in ecliptic longitude, as seen from the Sun.
 
 A relative longitude is the angle between two bodies measured in the plane of the Earth's orbit (the ecliptic plane). The distance of the bodies above or below the ecliptic plane is ignored. If you imagine the shadow of the body cast onto the ecliptic plane, and the angle measured around that plane from one body to the other in the direction the planets orbit the Sun, you will get an angle somewhere between 0 and 360 degrees. This is the relative longitude.
 
-Given a planet other than the Earth in body and a time to start the search in startTime, this function searches for the next time that the relative longitude measured from the planet to the Earth is targetRelLon.
+Given a planet other than the Earth in `body` and a time to start the search in `startTime`, this function searches for the next time that the relative longitude measured from the planet to the Earth is `targetRelLon`.
 
 Certain astronomical events are defined in terms of relative longitude between the Earth and another planet:
 
@@ -21,9 +21,11 @@ Certain astronomical events are defined in terms of relative longitude between t
 
 #### Return
 
-The time of the first relative longitude event that occurs after startTime.
+The time of the first relative longitude event that occurs after `startTime`.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

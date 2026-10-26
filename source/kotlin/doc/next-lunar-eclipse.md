@@ -6,7 +6,7 @@ fun [nextLunarEclipse](next-lunar-eclipse.md)(prevEclipseTime: [Time](-time/inde
 
 Searches for the next lunar eclipse in a series.
 
-After using [searchLunarEclipse](search-lunar-eclipse.md) to find the first lunar eclipse in a series, you can call this function to find the next consecutive lunar eclipse. Pass in the center value from the [LunarEclipseInfo](-lunar-eclipse-info/index.md) returned by the previous call to searchLunarEclipse or nextLunarEclipse to find the next lunar eclipse.
+After using [searchLunarEclipse](search-lunar-eclipse.md) to find the first lunar eclipse in a series, you can call this function to find the next consecutive lunar eclipse. Pass in the `center` value from the [LunarEclipseInfo](-lunar-eclipse-info/index.md) returned by the previous call to `searchLunarEclipse` or `nextLunarEclipse` to find the next lunar eclipse.
 
 See [lunarEclipsesAfter](lunar-eclipses-after.md) for convenient iteration of consecutive lunar eclipses.
 
@@ -14,7 +14,9 @@ See [lunarEclipsesAfter](lunar-eclipses-after.md) for convenient iteration of co
 
 Information about the next lunar eclipse in a series.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

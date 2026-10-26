@@ -2,7 +2,7 @@
 
 # ut
 
-val [ut](ut.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+val [ut](ut.md): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 UT1/UTC number of days since noon on January 1, 2000.
 
@@ -12,6 +12,6 @@ Universal Time Coordinate (UTC) is the international standard for legal and civi
 
 UT1 is an idealized time scale based on observed rotation of the Earth, which gradually slows down in an unpredictable way over time, due to tidal drag by the Moon and Sun, large scale weather events like hurricanes, and internal seismic and convection effects. Conceptually, UT1 drifts from atomic time continuously and erratically, whereas UTC is adjusted by a scheduled whole number of leap seconds as needed.
 
-The value in ut is appropriate for any calculation involving the Earth's rotation, such as calculating rise/set times, culumination, and anything involving apparent sidereal time.
+The value in `ut` is appropriate for any calculation involving the Earth's rotation, such as calculating rise/set times, culumination, and anything involving apparent sidereal time.
 
 Before the era of atomic timekeeping, days based on the Earth's rotation were often known as *mean solar days*.

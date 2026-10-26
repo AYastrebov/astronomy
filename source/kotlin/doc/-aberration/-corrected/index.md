@@ -2,7 +2,6 @@
 
 # Corrected
 
-[Corrected](index.md)()
+[Corrected](index.md)
 
 Request correction for aberration.
-

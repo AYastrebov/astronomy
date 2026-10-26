@@ -2,7 +2,7 @@
 
 # eval
 
-abstract fun [eval](eval.md)(time: [Time](../-time/index.md)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+abstract fun [eval](eval.md)(time: [Time](../-time/index.md)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Evaluates a scalar function at a given time.
 
@@ -10,7 +10,9 @@ Evaluates a scalar function at a given time.
 
 The floating point value of the scalar function at the given time.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

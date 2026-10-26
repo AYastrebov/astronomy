@@ -2,7 +2,6 @@
 
 # Normal
 
-[Normal](index.md)()
+[Normal](index.md)
 
 Recommended correction for standard atmospheric refraction.
-

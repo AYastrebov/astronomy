@@ -2,7 +2,6 @@
 
 # Annular
 
-[Annular](index.md)()
+[Annular](index.md)
 
 An annular solar eclipse. (Never used for a lunar eclipse.)
-

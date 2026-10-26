@@ -14,7 +14,9 @@ See [moonQuartersAfter](moon-quarters-after.md) for convenient iteration of cons
 
 A [MoonQuarterInfo](-moon-quarter-info/index.md) object reporting the next quarter phase and the time it will occur.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

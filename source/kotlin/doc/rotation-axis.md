@@ -18,7 +18,9 @@ See [AxisInfo](-axis-info/index.md) for more detailed information.
 
 North pole orientation and body spin angle.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

@@ -2,5 +2,6 @@
 
 # Moon
 
-The Earth's natural satellite, the Moon.
+[Moon](index.md)
 
+The Earth's natural satellite, the Moon.

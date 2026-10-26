@@ -2,7 +2,7 @@
 
 # seasons
 
-fun [seasons](seasons.md)(year: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html)): [SeasonsInfo](-seasons-info/index.md)
+fun [seasons](seasons.md)(year: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [SeasonsInfo](-seasons-info/index.md)
 
 Finds both equinoxes and both solstices for a given calendar year.
 
@@ -16,7 +16,9 @@ The solstices are the moments twice each year when one of the Earth's poles is m
 
 A [SeasonsInfo](-seasons-info/index.md) object that contains four [Time](-time/index.md) values: the March and September equinoxes and the June and December solstices.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

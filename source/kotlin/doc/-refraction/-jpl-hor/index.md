@@ -2,7 +2,6 @@
 
 # JplHor
 
-[JplHor](index.md)()
+[JplHor](index.md)
 
 Used only for compatibility testing with JPL Horizons online tool.
-

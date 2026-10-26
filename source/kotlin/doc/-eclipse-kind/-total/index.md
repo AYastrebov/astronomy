@@ -2,7 +2,6 @@
 
 # Total
 
-[Total](index.md)()
+[Total](index.md)
 
 A total lunar/solar eclipse.
-

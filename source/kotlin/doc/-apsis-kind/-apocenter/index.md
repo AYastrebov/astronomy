@@ -2,7 +2,6 @@
 
 # Apocenter
 
-[Apocenter](index.md)()
+[Apocenter](index.md)
 
 The body is at its farthest distance from the object it orbits.
-

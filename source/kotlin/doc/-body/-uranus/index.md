@@ -2,5 +2,6 @@
 
 # Uranus
 
-The planet Uranus.
+[Uranus](index.md)
 
+The planet Uranus.

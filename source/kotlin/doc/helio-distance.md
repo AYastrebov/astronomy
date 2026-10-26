@@ -2,17 +2,19 @@
 
 # helioDistance
 
-fun [helioDistance](helio-distance.md)(body: [Body](-body/index.md), time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+fun [helioDistance](helio-distance.md)(body: [Body](-body/index.md), time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Calculates the distance between a body and the Sun at a given time.
 
-Given a date and time, this function calculates the distance between the center of body and the center of the Sun, expressed in AU. For the planets Mercury through Neptune, this function is significantly more efficient than calling [helioVector](helio-vector.md) followed by taking the length of the resulting vector.
+Given a date and time, this function calculates the distance between the center of `body` and the center of the Sun, expressed in AU. For the planets Mercury through Neptune, this function is significantly more efficient than calling [helioVector](helio-vector.md) followed by taking the length of the resulting vector.
 
 #### Return
 
 The heliocentric distance in AU.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

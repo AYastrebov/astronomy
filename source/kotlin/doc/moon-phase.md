@@ -2,7 +2,7 @@
 
 # moonPhase
 
-fun [moonPhase](moon-phase.md)(time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)
+fun [moonPhase](moon-phase.md)(time: [Time](-time/index.md)): [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)
 
 Returns the Moon's phase as an angle from 0 to 360 degrees.
 
@@ -21,7 +21,9 @@ This function determines the phase of the Moon using its apparent ecliptic longi
 
 The angle as described above, a value in the range 0..360 degrees.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

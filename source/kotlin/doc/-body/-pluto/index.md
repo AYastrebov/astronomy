@@ -2,5 +2,6 @@
 
 # Pluto
 
-The planet Pluto.
+[Pluto](index.md)
 
+The planet Pluto.

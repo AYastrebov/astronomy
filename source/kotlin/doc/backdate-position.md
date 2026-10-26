@@ -10,19 +10,21 @@ When observing a distant object, for example Jupiter as seen from Earth, the amo
 
 This function solves the light travel time correction for the apparent relative position vector of a target body as seen by an observer body at a given observation time.
 
-For geocentric calculations, #geoVector also includes light travel time correction, but the time t embedded in its returned vector refers to the observation time, not the backdated time that light left the observed body. Thus backdatePosition provides direct access to the light departure time for callers that need it.
+For geocentric calculations, #geoVector also includes light travel time correction, but the time `t` embedded in its returned vector refers to the observation time, not the backdated time that light left the observed body. Thus `backdatePosition` provides direct access to the light departure time for callers that need it.
 
 For a more generalized light travel correction solver, see [correctLightTravel](correct-light-travel.md).
 
 #### Return
 
-The position vector at the solved backdated time. Its t field holds the time that light left the observed body to arrive at the observer at the observation time.
+The position vector at the solved backdated time. Its `t` field holds the time that light left the observed body to arrive at the observer at the observation time.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|
 | time | The time of observation. |
 | observerBody | The body to be used as the observation location. |
 | targetBody | The body to be observed. |
-| aberration | Aberration.Corrected to correct for aberration, or Aberration.None to leave uncorrected. |
+| aberration | `Aberration.Corrected` to correct for aberration, or `Aberration.None` to leave uncorrected. |

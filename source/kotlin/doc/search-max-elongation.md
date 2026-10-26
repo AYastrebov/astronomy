@@ -10,7 +10,9 @@ Mercury and Venus are are often difficult to observe because they are closer to 
 
 This function solves for those times, reporting the next maximum elongation event's date and time, the elongation value itself, the relative longitude with the Sun, and whether the planet is best observed in the morning or evening. See [elongation](elongation.md) for more details about the returned structure.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

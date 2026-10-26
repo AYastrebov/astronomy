@@ -2,5 +2,6 @@
 
 # Venus
 
-The planet Venus.
+[Venus](index.md)
 
+The planet Venus.

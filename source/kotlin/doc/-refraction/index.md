@@ -2,7 +2,7 @@
 
 # Refraction
 
-enum [Refraction](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html)&lt;[Refraction](index.md)&gt; 
+enum [Refraction](index.md) : [Enum](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html)&lt;[Refraction](index.md)&gt; 
 
 Selects whether to correct for atmospheric refraction, and if so, how.
 
@@ -10,7 +10,6 @@ Selects whether to correct for atmospheric refraction, and if so, how.
 
 | | |
 |---|---|
-| [None](-none/index.md)<br>[None](-none/index.md)()<br>No atmospheric refraction correction (airless). |
-| [Normal](-normal/index.md)<br>[Normal](-normal/index.md)()<br>Recommended correction for standard atmospheric refraction. |
-| [JplHor](-jpl-hor/index.md)<br>[JplHor](-jpl-hor/index.md)()<br>Used only for compatibility testing with JPL Horizons online tool. |
-
+| [None](-none/index.md)<br>[None](-none/index.md)<br>No atmospheric refraction correction (airless). |
+| [Normal](-normal/index.md)<br>[Normal](-normal/index.md)<br>Recommended correction for standard atmospheric refraction. |
+| [JplHor](-jpl-hor/index.md)<br>[JplHor](-jpl-hor/index.md)<br>Used only for compatibility testing with JPL Horizons online tool. |

@@ -2,7 +2,7 @@
 
 # Aberration
 
-enum [Aberration](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html)&lt;[Aberration](index.md)&gt; 
+enum [Aberration](index.md) : [Enum](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html)&lt;[Aberration](index.md)&gt; 
 
 Aberration calculation options.
 
@@ -16,6 +16,5 @@ Aberration correction is useful to improve accuracy of coordinates of apparent l
 
 | | |
 |---|---|
-| [Corrected](-corrected/index.md)<br>[Corrected](-corrected/index.md)()<br>Request correction for aberration. |
-| [None](-none/index.md)<br>[None](-none/index.md)()<br>Do not correct for aberration. |
-
+| [Corrected](-corrected/index.md)<br>[Corrected](-corrected/index.md)<br>Request correction for aberration. |
+| [None](-none/index.md)<br>[None](-none/index.md)<br>Do not correct for aberration. |

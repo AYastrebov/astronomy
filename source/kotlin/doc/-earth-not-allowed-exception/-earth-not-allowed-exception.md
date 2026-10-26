@@ -2,4 +2,4 @@
 
 # EarthNotAllowedException
 
-fun [EarthNotAllowedException](-earth-not-allowed-exception.md)()
+constructor()

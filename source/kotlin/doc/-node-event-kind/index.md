@@ -2,7 +2,7 @@
 
 # NodeEventKind
 
-enum [NodeEventKind](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html)&lt;[NodeEventKind](index.md)&gt; 
+enum [NodeEventKind](index.md) : [Enum](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html)&lt;[NodeEventKind](index.md)&gt; 
 
 Indicates whether a crossing through the ecliptic plane is ascending or descending.
 
@@ -10,6 +10,5 @@ Indicates whether a crossing through the ecliptic plane is ascending or descendi
 
 | | |
 |---|---|
-| [Ascending](-ascending/index.md)<br>[Ascending](-ascending/index.md)()<br>The body passes through the ecliptic plane from south to north. |
-| [Descending](-descending/index.md)<br>[Descending](-descending/index.md)()<br>The body passes through the ecliptic plane from north to south. |
-
+| [Ascending](-ascending/index.md)<br>[Ascending](-ascending/index.md)<br>The body passes through the ecliptic plane from south to north. |
+| [Descending](-descending/index.md)<br>[Descending](-descending/index.md)<br>The body passes through the ecliptic plane from north to south. |

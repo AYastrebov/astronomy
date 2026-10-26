@@ -2,7 +2,7 @@
 
 # constellation
 
-fun [constellation](constellation.md)(ra: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html), dec: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html)): [ConstellationInfo](-constellation-info/index.md)
+fun [constellation](constellation.md)(ra: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html), dec: [Double](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html)): [ConstellationInfo](-constellation-info/index.md)
 
 Determines the constellation that contains the given point in the sky.
 
@@ -12,7 +12,9 @@ Given J2000 equatorial (EQJ) coordinates of a point in the sky, determines the c
 
 A structure that contains the 3-letter abbreviation and full name of the constellation that contains the given (ra,dec), along with the converted B1875 (ra,dec) for that point.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

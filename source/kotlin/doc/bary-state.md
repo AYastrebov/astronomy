@@ -12,7 +12,9 @@ Given a body and a time, calculates the barycentric position and velocity vector
 
 The barycentric position and velocity vectors of the body.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

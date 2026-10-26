@@ -10,7 +10,9 @@ Returns a relative position vector for a given time.
 
 The relative position vector at the specified time.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

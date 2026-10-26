@@ -2,7 +2,7 @@
 
 # JupiterMoonsInfo
 
-class [JupiterMoonsInfo](index.md)(io: [StateVector](../-state-vector/index.md), europa: [StateVector](../-state-vector/index.md), ganymede: [StateVector](../-state-vector/index.md), callisto: [StateVector](../-state-vector/index.md))
+class [JupiterMoonsInfo](index.md)(val io: [StateVector](../-state-vector/index.md), val europa: [StateVector](../-state-vector/index.md), val ganymede: [StateVector](../-state-vector/index.md), val callisto: [StateVector](../-state-vector/index.md))
 
 Holds the positions and velocities of Jupiter's major 4 moons.
 
@@ -12,7 +12,7 @@ The [jupiterMoons](../jupiter-moons.md) function returns an object of this type 
 
 | | |
 |---|---|
-| [JupiterMoonsInfo](-jupiter-moons-info.md)<br>fun [JupiterMoonsInfo](-jupiter-moons-info.md)(io: [StateVector](../-state-vector/index.md), europa: [StateVector](../-state-vector/index.md), ganymede: [StateVector](../-state-vector/index.md), callisto: [StateVector](../-state-vector/index.md)) |
+| [JupiterMoonsInfo](-jupiter-moons-info.md)<br>constructor(io: [StateVector](../-state-vector/index.md), europa: [StateVector](../-state-vector/index.md), ganymede: [StateVector](../-state-vector/index.md), callisto: [StateVector](../-state-vector/index.md)) |
 
 ## Properties
 

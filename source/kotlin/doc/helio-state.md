@@ -12,7 +12,9 @@ Given a body and a time, calculates the position and velocity vectors for the ce
 
 A state vector that contains heliocentric position and velocity vectors. The positions are expressed in AU. The velocities are expressed in AU/day.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

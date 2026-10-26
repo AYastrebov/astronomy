@@ -10,13 +10,15 @@ This function calculates the position of the given celestial body as a vector, u
 
 The position is not corrected for light travel time or aberration. This is different from the behavior of [geoVector](geo-vector.md).
 
-If given an invalid value for body, this function will throw an [InvalidBodyException](-invalid-body-exception/index.md).
+If given an invalid value for `body`, this function will throw an [InvalidBodyException](-invalid-body-exception/index.md).
 
 #### Return
 
 The heliocentric position vector of the center of the given body.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

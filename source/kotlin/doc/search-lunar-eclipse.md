@@ -6,15 +6,17 @@ fun [searchLunarEclipse](search-lunar-eclipse.md)(startTime: [Time](-time/index.
 
 Searches for a lunar eclipse.
 
-This function finds the first lunar eclipse that occurs after startTime. A lunar eclipse may be penumbral, partial, or total. See [LunarEclipseInfo](-lunar-eclipse-info/index.md) for more information. To find a series of lunar eclipses, call this function once, then keep calling [nextLunarEclipse](next-lunar-eclipse.md) as many times as desired, passing in the center value returned from the previous call.
+This function finds the first lunar eclipse that occurs after `startTime`. A lunar eclipse may be penumbral, partial, or total. See [LunarEclipseInfo](-lunar-eclipse-info/index.md) for more information. To find a series of lunar eclipses, call this function once, then keep calling [nextLunarEclipse](next-lunar-eclipse.md) as many times as desired, passing in the `center` value returned from the previous call.
 
 See [lunarEclipsesAfter](lunar-eclipses-after.md) for convenient iteration of consecutive lunar eclipses.
 
 #### Return
 
-Information about the first lunar eclipse that occurs after startTime.
+Information about the first lunar eclipse that occurs after `startTime`.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

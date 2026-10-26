@@ -2,4 +2,4 @@
 
 # HourAngleInfo
 
-fun [HourAngleInfo](-hour-angle-info.md)(time: [Time](../-time/index.md), hor: [Topocentric](../-topocentric/index.md))
+constructor(time: [Time](../-time/index.md), hor: [Topocentric](../-topocentric/index.md))

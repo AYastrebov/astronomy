@@ -12,7 +12,9 @@ This is one of the family of functions that returns a rotation matrix for conver
 
 A rotation matrix that converts EQD to ECT.
 
-## Parameters
+#### Parameters
+
+common
 
 | | |
 |---|---|

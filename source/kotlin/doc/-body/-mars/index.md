@@ -2,5 +2,6 @@
 
 # Mars
 
-The planet Mars.
+[Mars](index.md)
 
+The planet Mars.
