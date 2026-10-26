@@ -8,7 +8,7 @@ echo.
 if exist build ( rd /s/q build || exit /b 1 )
 if exist test ( rd /s/q test || exit /b 1 )
 md test || exit /b 1
-call gradlew.bat jar || exit /b 1
+call gradlew.bat installJvmDist || exit /b 1
 
 REM ----------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ exit /b 0
 REM ----------------------------------------------------------------------------------
 
 :TestDemo
-java -jar build/libs/AstronomyDemo-1.0.0.jar %* > test\%1.txt || (
+call rundemo.bat %* > test\%1.txt || (
     echo Error running Kotlin demo: %1
     exit /b 1
 )

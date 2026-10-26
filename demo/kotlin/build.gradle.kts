@@ -16,9 +16,15 @@ repositories {
 }
 
 kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+
     jvm {
-        mainRun {
-            mainClass.set("MainKt")
+        binaries {
+            executable {
+                mainClass.set("MainKt")
+            }
         }
     }
 

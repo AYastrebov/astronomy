@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar build/libs/AstronomyDemo-1.0.0.jar $*
+build/install/AstronomyDemo-jvm/bin/AstronomyDemo "$@"

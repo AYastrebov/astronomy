@@ -33,11 +33,23 @@ via Gradle composite build).
 ./gradlew jvmRun --args="positions 29 -81"
 ```
 
+To skip Gradle on every run, install the JVM distribution once and use the
+`rundemo` launcher (`rundemo.bat` on Windows). This is what `demotest` uses.
+
+```
+./gradlew installJvmDist
+./rundemo seasons 2026
+```
+
 ### WASM/WASI (via Node.js)
 
 ```
 ./gradlew wasmWasiNodeProductionRun
 ```
+
+The Node.js launcher that the Kotlin Gradle plugin generates for WASI does not
+pass command-line arguments to `main`, and it ignores the exit status. So this
+target always prints the usage text and exits with status 0.
 
 ### Linux native
 

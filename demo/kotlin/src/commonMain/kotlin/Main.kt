@@ -1,5 +1,6 @@
 import io.github.cosinekitty.astronomy.*
 import kotlin.time.Clock
+import kotlin.time.Instant
 
 private const val usageText = """
 In all demos that include [yyyy-mm-ddThh:mm:ssZ]
@@ -69,12 +70,10 @@ internal class Demo(
 )
 
 fun main(args: Array<String>) {
-    runDemo(args)
+    exitProcess(runDemo(args))
 }
 
 class DemoException(message:String): Exception(message)
-
-private val regexDateTime = Regex("""^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)Z$""")
 
 private fun runDemo(args: Array<String>): Int {
     if (args.isEmpty()) return printUsage()
@@ -97,22 +96,21 @@ private fun runDemo(args: Array<String>): Int {
 }
 
 internal fun parseTime(args: Array<String>, index: Int): Time {
-    if (index >= 0 && index < args.size) {
-        val text = args[index]
-        val m = regexDateTime.matchEntire(text)
-            ?: throw DemoException("Invalid date/time format: '$text'. Expected yyyy-mm-ddThh:mm:ssZ")
-        return Time(
-            m.groupValues[1].toInt(),
-            m.groupValues[2].toInt(),
-            m.groupValues[3].toInt(),
-            m.groupValues[4].toInt(),
-            m.groupValues[5].toInt(),
-            m.groupValues[6].toDouble()
-        )
-    }
-    val millis = Clock.System.now().toEpochMilliseconds()
+    val millis = (
+        if (index >= 0 && index < args.size)
+            parseInstant(args[index]).toEpochMilliseconds()
+        else
+            Clock.System.now().toEpochMilliseconds()
+    )
     return Time.fromMillisecondsSince1970(millis)
 }
+
+private fun parseInstant(text: String): Instant =
+    try {
+        Instant.parse(text)
+    } catch (_: IllegalArgumentException) {
+        throw DemoException("Invalid date/time format: '$text'. Expected yyyy-mm-ddThh:mm:ssZ")
+    }
 
 internal fun parseNumber(name: String, text: String, minValue: Double, maxValue: Double): Double {
     try {
