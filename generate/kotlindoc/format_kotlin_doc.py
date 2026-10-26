@@ -4,7 +4,7 @@
 #
 #   A custom utility for post-processing Markdown documentation
 #   for the Kotlin version of Astronomy Engine.
-#   There are a few things about the `dokkaGfm` tool I don't like.
+#   There are a few things about Dokka's Markdown (GFM) output I don't like.
 #   This script is a hack to work around them.
 #
 import sys
@@ -13,129 +13,58 @@ import re
 import shutil
 
 
-SymbolsWithUnwantedArgs = [
-    'SSB',
-    'EMB',
-    'Moon',
-    'Sun',
-    'Mercury',
-    'Venus',
-    'Earth',
-    'Mars',
-    'Jupiter',
-    'Saturn',
-    'Uranus',
-    'Neptune',
-    'Pluto',
-    'Rise',
-    'Set'
-]
+# Members that the Kotlin compiler generates for every enum class.
+# They are unhelpful noise in the docs, so they are stripped out.
+EnumPropertyNoise = set(['name', 'ordinal', 'entries'])
+EnumFunctionNoise = set(['valueOf', 'values'])
+EnumNoisePages = set(['entries.md', 'value-of.md', 'values.md'])
 
 
-def RemoveJvmTags(text):
-    fix = text.replace(' | [jvm]', '')
-    fix = fix.replace('[jvm]\\\n', '')
+def RemovePlatformTags(text):
+    # Every declaration lives in commonMain, so the [common] platform tag
+    # that Dokka puts on each one adds no information. ([jvm] was the
+    # equivalent tag back when the library was JVM-only.)
+    fix = text
+    for tag in ['[common]', '[jvm]']:
+        fix = fix.replace(' | ' + tag, '')
+        fix = fix.replace(tag + '<br>', '')
+        fix = fix.replace(tag + '\\\n', '')
     fix = fix.replace('\njvm\n', '')
     return fix
 
 
-def RemoveEnumProperties(text):
-    # Remove the entire 'Properties' section if it consists of `name` and `ordinal` only.
-    # 1. These are unhelpful noise. They exist for all enum classes, and don't tell us anything.
-    # 2. There is a bug in Dokka that makes them link to the wrong class.
-    #    I reported this: https://github.com/Kotlin/dokka/issues/2464
-    # In the meantime, I strip them out entirely.
-    # Search for '## Properties'.
-    # If all the listed items consist of `name` and `ordinal` only, then
-    # chop off the entire section.
-    prefix = '## Properties'
-    sectionIndex = text.find(prefix)
-    if sectionIndex >= 0:
-        rowsIndex = sectionIndex + len(prefix)
-        tail = text[rowsIndex:]
-        nameSet = set(re.findall(r'\n\|\s+\[(\S+)\]', tail))
-        if nameSet == set(['name', 'ordinal']):
-            # Truncate the markdown text right before '## Properties'
-            return text[:sectionIndex]
-
-        # If there are other properties besides 'name' and 'ordinal',
-        # keep the other properties but get rid of 'name' and 'ordinal'.
-        if ('name' in nameSet) and ('ordinal' in nameSet):
-            rows = tail.split('\n')
-            fix = text[:rowsIndex]
-            for r in rows:
-                if (not r.startswith('| [name]')) and (not r.startswith('| [ordinal]')):
-                    fix += r + '\n'
-            return fix
-    # Return the entire text, unmodified.
-    return text
+def RemoveSectionRows(text, heading, unwanted):
+    # Within the Markdown table under `heading`, delete the rows whose first
+    # cell links to one of the names in `unwanted`. If that leaves the table
+    # empty, delete the entire section.
+    prefix = '## ' + heading + '\n'
+    front = text.find(prefix)
+    if front < 0:
+        return text
+    back = text.find('\n## ', front + len(prefix))
+    back = len(text) if back < 0 else back + 1
+    lines = text[front:back].split('\n')
+    kept = [r for r in lines if not (m := re.match(r'^\| \[([^\]]+)\]', r)) or m.group(1) not in unwanted]
+    if not any(re.match(r'^\| \[', r) for r in kept):
+        return text[:front] + text[back:]
+    return text[:front] + '\n'.join(kept) + text[back:]
 
 
-def RemovePrivateConstructors(text):
-    # enum class Body contains a private constructor where members
-    # can initialize their internal properties.
-    # This is leaking into the dokkaGfm output.
-    # I submitted the following issue about this:
-    # https://github.com/Kotlin/dokka/issues/2468
-    # Example:
-    # | [Saturn](-saturn/index.md) | [jvm]<br>[Saturn](-saturn/index.md)(SATURN_GM, 10759.22, VsopModel(vsopLonSaturn, vsopLatSaturn, vsopRadSaturn))<br>The planet Saturn. |
-    # should be converted to:
-    # | [Saturn](-saturn/index.md) | [jvm]<br>The planet Saturn. |
-    fix = text
-    for sym in SymbolsWithUnwantedArgs:
-        prefix = '<br>[' + sym + ']'
-        front = fix.find(prefix)
-        if front >= 0:
-            # Chop out the entire section that contains the unwanted constructor call.
-            back = fix.find('<br>', front + len(prefix))
-            if back > front:
-                fix = fix[:front] + fix[back:]
-
-        # Another case: the individual enum member has its own index.md file.
-        # This has an unwanted constructor call.
-        if ('# ' + sym + '\n') in fix:
-            prefix = '\n[' + sym + '](index.md)('
-            front = fix.find(prefix)
-            if front >= 0:
-                suffix = '\n'
-                back = fix.find(suffix, front + len(prefix))
-                if back > front:
-                    fix = fix[:front] + fix[back + len(suffix):]
-
-    return fix
-
-
-def ReverseEnumEntries(text):
-    # Enumeration entries are listed in backwards order.
-    # I reported this as:
-    # https://github.com/Kotlin/dokka/issues/2466
-    # Work around this issue for now...
-    fix = text
-    prefix = '## Entries\n\n| | |\n|---|---|\n'
-    middleIndex = fix.find(prefix)
-    if middleIndex >= 0:
-        middleIndex += len(prefix)
-        front = fix[:middleIndex]
-        middle = fix[middleIndex:]
-        backIndex = middle.find('\n## ')
-        if backIndex > 0:
-            backIndex += 1
-            back = middle[backIndex:]
-            middle = middle[:backIndex]
-        else:
-            back = ''
-        rows = middle.strip().split('\n')
-        rows.reverse()
-        fix = front + '\n'.join(rows) + '\n\n' + back
+def RemoveEnumBoilerplate(text):
+    # `name` and `ordinal` appear on enum entries, and `entries`, `valueOf`,
+    # and `values` appear on enum classes. None of them tell the reader anything.
+    # The `name`/`ordinal` links also point at the wrong class:
+    # https://github.com/Kotlin/dokka/issues/2464
+    fix = RemoveSectionRows(text, 'Properties', EnumPropertyNoise)
+    if '\nenum [' in fix:
+        fix = RemoveSectionRows(fix, 'Functions', EnumFunctionNoise)
     return fix
 
 
 def FixMarkdown(text):
-    fix = RemoveEnumProperties(text)
-    fix = RemoveJvmTags(fix)
-    fix = RemovePrivateConstructors(fix)
-    fix = ReverseEnumEntries(fix)
-    return fix
+    fix = RemoveEnumBoilerplate(text)
+    fix = RemovePlatformTags(fix)
+    return fix.rstrip('\n') + '\n'
 
 
 def ExtractVersionNumber(filename):
@@ -163,7 +92,7 @@ LinkRegex = re.compile(r'\[([^\]]+)\]\(([^\):]+)\)')     # [Direction](-directio
 
 if __name__ == '__main__':
     prefixFileName = 'kotlin_prefix.md'
-    inDocDir = '../../source/kotlin/build/dokka/gfm/astronomy/io.github.cosinekitty.astronomy'
+    inDocDir = '../../source/kotlin/build/dokka/markdown/astronomy/io.github.cosinekitty.astronomy'
     rootFileName = os.path.join(inDocDir, 'index.md')
     outDir = '../../source/kotlin'
     outDocDir = os.path.join(outDir, 'doc')
@@ -186,11 +115,11 @@ if __name__ == '__main__':
             skipJunk = True
             for line in infile:
                 if skipJunk:
-                    if line.startswith('# Package '):
+                    if line.startswith('# Package'):
                         skipJunk = False
                 else:
                     fix = LinkRegex.sub(r'[\1](doc/\2)', line)
-                    fix = RemoveJvmTags(fix)
+                    fix = RemovePlatformTags(fix)
                     outfile.write(fix)
 
     # Nuke the existing 'doc' directory.
@@ -202,7 +131,15 @@ if __name__ == '__main__':
         # Calculate the target relative path.
         targetDir = os.path.join(outDocDir, dirName[1+len(inDocDir):])
         os.makedirs(targetDir, exist_ok = True)
+        # Skip pages for compiler-generated enum members; RemoveEnumBoilerplate
+        # already removed every link to them.
+        isEnum = False
+        if 'index.md' in files:
+            with open(os.path.join(dirName, 'index.md'), 'rt') as infile:
+                isEnum = '\nenum [' in infile.read()
         for fn in files:
+            if isEnum and fn in EnumNoisePages:
+                continue
             if fn.endswith('.md'):
                 inFileName = os.path.join(dirName, fn)
                 with open(inFileName, 'rt') as infile:

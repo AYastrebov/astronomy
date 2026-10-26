@@ -11,7 +11,6 @@ import kotlin.math.PI
 import kotlin.math.sqrt
 import kotlin.text.Regex
 
-private const val dataRootDir = "../../generate/"
 private const val MINUTES_PER_DAY = 24.0 * 60.0
 private const val SECONDS_PER_DAY = 60.0 * MINUTES_PER_DAY
 
@@ -1412,7 +1411,6 @@ class Tests {
                 EclipseKind.Penumbral -> (eclipse.obscuration == 0.0)
                 EclipseKind.Partial   -> (eclipse.obscuration > 0.0) && (eclipse.obscuration < 1.0)
                 EclipseKind.Total     -> (eclipse.obscuration == 1.0)
-                else                  -> fail("Invalid lunar eclipse kind: ${eclipse.kind}")
             }
             assertTrue(frac_valid, "$filename line $lnum: invalid obscuration ${eclipse.obscuration} for kind ${eclipse.kind}")
 

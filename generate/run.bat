@@ -193,7 +193,7 @@ if exist build (
         exit /b 1
     )
 )
-call gradlew.bat assemble build test dokkaGfm jar || exit /b 1
+call gradlew.bat build dokkaGenerateMarkdown || exit /b 1
 popd
 
 cd kotlindoc
