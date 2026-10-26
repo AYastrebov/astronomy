@@ -32,6 +32,9 @@ import kotlin.jvm.JvmName
 import kotlin.jvm.JvmOverloads
 import kotlin.jvm.JvmStatic
 
+import kotlin.concurrent.atomics.AtomicArray
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
+
 import kotlin.math.absoluteValue
 import kotlin.math.abs
 import kotlin.math.acos
@@ -3687,55 +3690,62 @@ private fun gravFromState(state: BodyState): GravSim {
     return GravSim(bary, grav)
 }
 
-@Suppress("NON_JVM_SYNCHRONIZED")
+@OptIn(ExperimentalAtomicApi::class)
 private fun getPlutoSegment(tt: Double): List<BodyGravCalc>? {
     if (tt < plutoStateTable[0].tt || tt > plutoStateTable[PLUTO_NUM_STATES-1].tt)
         return null     // Don't bother calculating a segment. Let the caller crawl backward/forward to this time
 
     val segIndex = clampIndex((tt - plutoStateTable[0].tt) / PLUTO_TIME_STEP, PLUTO_NUM_STATES-1)
-    return plutoCache.getOrPut(segIndex) {
-            val seg = mutableListOf<BodyGravCalc>()
+    plutoCache.loadAt(segIndex)?.let { return it }
 
-            // The first endpoint is exact.
-            var sim = gravFromState(plutoStateTable[segIndex])
+    // Build the segment privately, then publish it with compare-and-set.
+    // Concurrent callers may each build the same segment, but the result is
+    // deterministic, so whichever copy wins the race is the one everyone uses.
+    // This keeps the cache thread-safe on every target without a lock.
+    val built = run {
+        val seg = mutableListOf<BodyGravCalc>()
+
+        // The first endpoint is exact.
+        var sim = gravFromState(plutoStateTable[segIndex])
+        seg.add(sim.grav)
+
+        // Simulate forwards from the lower time bound.
+        var steptt = sim.grav.tt
+        for (i in 1 until PLUTO_NSTEPS-1) {
+            steptt += PLUTO_DT
+            sim = simulateGravity(steptt, sim.grav)
             seg.add(sim.grav)
-
-            // Simulate forwards from the lower time bound.
-            var steptt = sim.grav.tt
-            for (i in 1 until PLUTO_NSTEPS-1) {
-                steptt += PLUTO_DT
-                sim = simulateGravity(steptt, sim.grav)
-                seg.add(sim.grav)
-            }
-
-            // The last endpoint is exact.
-            sim = gravFromState(plutoStateTable[segIndex + 1])
-            seg.add(sim.grav)
-
-            // Simulate backwards from the upper time bound.
-            val reverse = buildList {
-                add(sim.grav)
-
-                steptt = sim.grav.tt
-                for (i in (PLUTO_NSTEPS-2) downTo 1) {
-                    steptt -= PLUTO_DT
-                    sim = simulateGravity(steptt, sim.grav)
-                    add(sim.grav)
-                }
-
-                add(seg[0])
-            }.reversed()
-
-            // Fade-mix the two series so that there are no discontinuities.
-            for (i in (PLUTO_NSTEPS-2) downTo 1) {
-                val ramp = i.toDouble() / (PLUTO_NSTEPS - 1)
-                seg[i].r.mix(ramp, reverse[i].r)
-                seg[i].v.mix(ramp, reverse[i].v)
-                seg[i].a.mix(ramp, reverse[i].a)
-            }
-
-            seg
         }
+
+        // The last endpoint is exact.
+        sim = gravFromState(plutoStateTable[segIndex + 1])
+        seg.add(sim.grav)
+
+        // Simulate backwards from the upper time bound.
+        val reverse = buildList {
+            add(sim.grav)
+
+            steptt = sim.grav.tt
+            for (i in (PLUTO_NSTEPS-2) downTo 1) {
+                steptt -= PLUTO_DT
+                sim = simulateGravity(steptt, sim.grav)
+                add(sim.grav)
+            }
+
+            add(seg[0])
+        }.reversed()
+
+        // Fade-mix the two series so that there are no discontinuities.
+        for (i in (PLUTO_NSTEPS-2) downTo 1) {
+            val ramp = i.toDouble() / (PLUTO_NSTEPS - 1)
+            seg[i].r.mix(ramp, reverse[i].r)
+            seg[i].v.mix(ramp, reverse[i].v)
+            seg[i].a.mix(ramp, reverse[i].a)
+        }
+
+        seg
+    }
+    return if (plutoCache.compareAndSetAt(segIndex, null, built)) built else plutoCache.loadAt(segIndex)
 }
 
 private fun calcPlutoOneWay(
@@ -10104,7 +10114,8 @@ private val plutoStateTable: Array<BodyState> = arrayOf(
 ,   BodyState(  700800.0, TerseVector(-15.576200701394,  34.399412961275,  15.466033737854), TerseVector(-2.0098814612884e-03, -1.7191109825989e-03,  7.0414782780416e-05))
 ,   BodyState(  730000.0, TerseVector(  4.243252837090, -30.118201690825, -10.707441231349), TerseVector( 3.1725847067411e-03,  1.6098461202270e-04, -9.0672150593868e-04))
 )
-private val plutoCache = hashMapOf<Int, List<BodyGravCalc>>()
+@OptIn(ExperimentalAtomicApi::class)
+private val plutoCache = AtomicArray<List<BodyGravCalc>?>(PLUTO_NUM_STATES) { null }
 
 //---------------------------------------------------------------------------------------
 // Models for Jupiter's four largest moons.
