@@ -1,4 +1,4 @@
-# Astronomy Engine (Kotlin)
+# Astronomy Engine (Kotlin Multiplatform)
 
 [![JitPack build status](https://jitpack.io/v/cosinekitty/astronomy.svg)](https://jitpack.io/#cosinekitty/astronomy)
 
@@ -12,29 +12,59 @@ Feel free to [start a new discussion topic](https://github.com/cosinekitty/astro
 if you need some help in your astronomy-related project, either with this code or astronomy
 computation concepts in general.
 
-To include Astronomy Engine in your project, add this in your root `build.gradle.kts` at the end of repositories section:
+## Installation
+
+Astronomy Engine is a Kotlin Multiplatform library. It supports these platforms:
+
+- JVM (Java 17 or newer)
+- Android (API level 23 or newer)
+- iOS (`iosArm64`, `iosSimulatorArm64`) and macOS (`macosArm64`)
+- Linux (`linuxX64`) and Windows (`mingwX64`)
+- WebAssembly (`wasmJs`, `wasmWasi`)
+
+It is published through JitPack. Add the JitPack repository to your `settings.gradle.kts`:
 ```kotlin
-allprojects {
+dependencyResolutionManagement {
     repositories {
-        ...
+        mavenCentral()
         maven("https://jitpack.io")
     }
 }
 ```
 
-Now add the dependency:
+In a Kotlin Multiplatform project, add the dependency to `commonMain`:
+```kotlin
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation("io.github.cosinekitty:astronomy:2.1.19")
+        }
+    }
+}
+```
+
+In a JVM or Android project:
 ```kotlin
 dependencies {
     implementation("io.github.cosinekitty:astronomy:2.1.19")
 }
 ```
 
-For other build tools support have a look at [this](https://jitpack.io/#cosinekitty/astronomy).
+Gradle reads the library's Gradle module metadata and picks the right artifact for
+each platform. Build tools that don't read it, such as Maven, need the platform
+artifact named explicitly, for example `io.github.cosinekitty:astronomy-jvm`.
+For other build tools, see the [JitPack page](https://jitpack.io/#cosinekitty/astronomy).
+
+JitPack builds on Linux, and Kotlin/Native can only compile the iOS and macOS targets
+on a Mac, so JitPack does not provide those targets. To use Astronomy Engine on
+iOS or macOS, build it from source on a Mac with `./gradlew publishToMavenLocal`
+in the `source/kotlin` directory, and add `mavenLocal()` to your repositories.
 
 ---
 
 ## Contents
 
+- [Installation](#installation)
 - [Coordinate Transforms](#coords)
 - [Gravity Simulator](#gravsim)
 - [Types](#types)

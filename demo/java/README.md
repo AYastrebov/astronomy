@@ -20,8 +20,8 @@ Run without arguments to see usage text:
 ./gradlew run
 ```
 
-This requires the library at `../../source/kotlin` to be available (it is referenced
-via Gradle composite build).
+This requires JDK 21 (the Gradle toolchain version) and the library at
+`../../source/kotlin`, which is referenced via Gradle composite build.
 
 ---
 
@@ -58,3 +58,6 @@ point in an observer's sky as it crosses the meridian.
 
 ### [Seasons.java](src/main/java/io/github/cosinekitty/astronomy/demo/Seasons.java)
 Calculates the equinoxes and solstices for a given calendar year.
+
+### [SolarTime.java](src/main/java/io/github/cosinekitty/astronomy/demo/SolarTime.java)
+Displays the true solar time for a given observer location.

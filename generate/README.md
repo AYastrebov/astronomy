@@ -25,12 +25,15 @@ The following tools are required for developers:
 - xsltproc
 - coreutils
 - cppcheck
-- Java Developer Kit (JDK), for Kotlin.
-    - Hint for quick start: install [Android Developer Studio](https://developer.android.com/studio)
-    or the Community version of [IntelliJ IDEA](https://www.jetbrains.com/idea/).
+- Java Developer Kit (JDK) 17 or newer, for Kotlin.
+    - Hint for quick start: install [Android Studio](https://developer.android.com/studio)
+    or [IntelliJ IDEA](https://www.jetbrains.com/idea/).
     - Set the environment variable `JAVA_HOME` to point to the JDK that comes bundled with either.
-    - For example, if you install Android Developer Studio to `/home/yourname/android_studio`,
-    you can add the following to your `.bash_aliases` file: `export JAVA_HOME=/home/yourname/android_studio/jre`.
+    - For example, if you install Android Studio to `/home/yourname/android-studio`,
+    you can add the following to your `.bash_aliases` file: `export JAVA_HOME=/home/yourname/android-studio/jbr`.
+    - The Kotlin build compiles and tests every target the host supports. Linux hosts
+    build the JVM, Android, Linux, Windows, and WebAssembly targets; the iOS and macOS
+    targets can only be built on a Mac with Xcode installed.
 
 ## Build process
 
@@ -68,14 +71,14 @@ The following tools are required for developers:
     directory to your `PATH`. Verify that you can run `xsltproc.exe` from the command
     prompt without any popups about missing DLLs.
 
-- Java Developer Kit (JDK), for Kotlin.
-    - Hint for quick start: install [Android Developer Studio](https://developer.android.com/studio)
-    or the Community version of [IntelliJ IDEA](https://www.jetbrains.com/idea/).
+- Java Developer Kit (JDK) 17 or newer, for Kotlin.
+    - Hint for quick start: install [Android Studio](https://developer.android.com/studio)
+    or [IntelliJ IDEA](https://www.jetbrains.com/idea/).
     - Set the environment variable `JAVA_HOME` to point to the JDK that comes bundled with either.
-    - For example, if you install IntelliJ IDEA to its default location, you can set your user
-      environment variable `JAVA_HOME` to the following (adjusting for your actual version):
+    - For example, if you install Android Studio to its default location, you can set your user
+      environment variable `JAVA_HOME` to the following:
 
-      `C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.3.3\jbr`
+      `C:\Program Files\Android\Android Studio\jbr`
 
 
 ## Build process
